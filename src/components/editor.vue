@@ -13,7 +13,7 @@
     </div>
     <div class="canvas_bg">
       <div class="image_bg">
-        <img src="../assets/crew_front.png" alt="">
+        <img id="shirt_img" src="../assets/crew_front.png" alt="">
         <div id="drawing_area">
           <canvas id="canvas" width="300" height="450"></canvas>
         </div>
@@ -24,13 +24,19 @@
 
 <script>
 var customjs = require('vue-customjs');
+import {leftToCanvas} from '../main';
 
 export default {
   created: function(){
+    // Initialising fabirc.js
     var jsCode = `
     var cn = new fabric.Canvas('canvas');
     `;
     customjs.add(jsCode);
+    // Listening for the clicked color
+    leftToCanvas.$on('clicked-color', function(color){
+      document.getElementById('shirt_img').style.backgroundColor = color;
+    });
   }
 }
 </script>
