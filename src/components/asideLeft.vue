@@ -15,7 +15,7 @@
         Select colors
       </div>
       <div class="colors">
-        <div class="color-item" v-for='(color) in config.colors' :style="'background-color: '+color"></div>
+        <div class="color-item" v-for='(color) in config.colors' @click="colorClick(color)" :style="'background-color: '+color"></div>
       </div>
     </div>
 
@@ -35,8 +35,15 @@
 </template>
 
 <script>
+import {leftToCanvas} from '../main'
+
 export default {
-  props: ['config']
+  props: ['config'],
+  methods: {
+    colorClick: function(color){
+      leftToCanvas.$emit('clicked-color', color);
+    }
+  }
 }
 </script>
 
