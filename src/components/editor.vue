@@ -23,7 +23,15 @@
 </template>
 
 <script>
+var customjs = require('vue-customjs');
+
 export default {
+  created: function(){
+    var jsCode = `
+    var cn = new fabric.Canvas('canvas');
+    `;
+    customjs.add(jsCode);
+  }
 }
 </script>
 
