@@ -101,7 +101,7 @@ $window-heigth: 90vh;
     border: 1px solid #e8e8e8;
   }
 
-  .colors {
+  .colors,.artworks {
     width: $aside-width - 40px;
     border: 1px solid #e8e8e8;
     margin: auto;
