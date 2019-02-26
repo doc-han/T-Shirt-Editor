@@ -29,13 +29,22 @@ import {leftToCanvas} from '../main';
 export default {
   created: function(){
     // Initialising fabirc.js
-    var jsCode = `
+    var jsCode01 = `
     var cn = new fabric.Canvas('canvas');
     `;
-    customjs.add(jsCode);
+    customjs.add(jsCode01);
     // Listening for the clicked color
     leftToCanvas.$on('clicked-color', function(color){
       document.getElementById('shirt_img').style.backgroundColor = color;
+    });
+    // Listening for the clicked artwork
+    leftToCanvas.$on('clicked-artwork', function(artwork){
+      console.log(artwork);
+      fabric.Image.fromURL(artwork, function(img){
+        cn.add(img);
+        cn.renderAll();
+      });
+
     });
   }
 }
