@@ -25,7 +25,7 @@
       <div class="label">
         Artworks
       </div>
-      <div class="artworks">
+      <div @click="artworkClick($event)" class="artworks">
         <img class="artworks-item" src="https://vuejs.org/images/logo.png" alt="">
         <img class="artworks-item" src="https://vuejs.org/images/logo.png" alt="">
       </div>
@@ -42,6 +42,13 @@ export default {
   methods: {
     colorClick: function(color){
       leftToCanvas.$emit('clicked-color', color);
+    },
+    artworkClick: function(e){
+      var cls = e.target.classList[0];
+      if(cls=="artworks-item"){
+        var artwork = e.target.src;
+        leftToCanvas.$emit('clicked-artwork', artwork);
+      }
     }
   }
 }
@@ -81,6 +88,7 @@ $color-item-size: 30px;
     height: 100px;
     width: 130px;
     margin-bottom: 10px;
+    cursor: pointer;
   }
 
 
