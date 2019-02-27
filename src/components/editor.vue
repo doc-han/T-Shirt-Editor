@@ -22,7 +22,6 @@
 </template>
 
 <script>
-var customjs = require('vue-customjs');
 import {leftToCanvas} from '../main';
 
 // Initialising fabric js // when component is created
