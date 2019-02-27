@@ -1,15 +1,14 @@
 <template lang="html">
   <div>
     <div class="bar">
-      <div>
-        <i class="fa fa-trash"></i>
-      </div>
-      <div>
-        <i class="fa fa-image"></i>
-      </div>
-      <div>
-        <i class="fa fa-broom"></i>
-      </div>
+      <template v-if="toolbar.showActions">
+        <div @click="toolbarAction('delete')">
+          <i class="fa fa-trash"></i>
+        </div>
+        <div @click="toolbarAction('clear')">
+          <i class="fa fa-broom"></i>
+        </div>
+      </template>
     </div>
     <div class="canvas_bg">
       <div class="image_bg">
@@ -30,6 +29,30 @@ import {leftToCanvas} from '../main';
 var cn = null;
 
 export default {
+  data(){
+    return {
+      toolbar: {
+        showActions: true,
+      }
+    }
+  },
+  methods: {
+    toolbarAction: function(action){
+      switch (action) {
+        case 'delete':
+          var ob = cn.getActiveObject();
+          cn.remove(ob);
+          break;
+        case 'clear':
+          if(confirm("Are you sure you want to clear Everything!!!")){
+            //Delete everything drawn on the canvas
+          }
+        default:
+
+      }
+
+    }
+  },
   created: function(){
     // Listening for the clicked color
     leftToCanvas.$on('clicked-color', function(color){
@@ -40,15 +63,18 @@ export default {
       // Initialising canvas on first attempt to add object
       if(cn == null){
         cn = new fabric.Canvas('canvas');
+        var target = null;
+        cn.on('mouse:down',function(options){
+          target = options.target;
+        });
       }
       fabric.Image.fromURL(artwork, function(img){
-        console.log(cn);
         cn.add(img);
         cn.renderAll();
       });
 
     });
-  }
+  },
 }
 </script>
 
