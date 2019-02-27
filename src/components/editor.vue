@@ -26,21 +26,23 @@
 var customjs = require('vue-customjs');
 import {leftToCanvas} from '../main';
 
+// Initialising fabric js // when component is created
+var cn = null;
+
 export default {
   created: function(){
-    // Initialising fabirc.js
-    var jsCode01 = `
-    var cn = new fabric.Canvas('canvas');
-    `;
-    customjs.add(jsCode01);
     // Listening for the clicked color
     leftToCanvas.$on('clicked-color', function(color){
       document.getElementById('shirt_img').style.backgroundColor = color;
     });
     // Listening for the clicked artwork
     leftToCanvas.$on('clicked-artwork', function(artwork){
-      console.log(artwork);
+      // Initialising canvas on first attempt to add object
+      if(cn == null){
+        cn = new fabric.Canvas('canvas');
+      }
       fabric.Image.fromURL(artwork, function(img){
+        console.log(cn);
         cn.add(img);
         cn.renderAll();
       });
