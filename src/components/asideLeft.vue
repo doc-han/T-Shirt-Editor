@@ -27,7 +27,7 @@
       </div>
       <div @click="artworkClick($event)" class="artworks">
         <img class="artworks-item" src="https://vuejs.org/images/logo.png" alt="">
-        <img class="artworks-item" src="https://vuejs.org/images/logo.png" alt="">
+        <img class="artworks-item" src="../assets/logo.png" alt="">
       </div>
     </div>
 
