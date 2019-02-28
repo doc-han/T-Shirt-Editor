@@ -16,6 +16,9 @@
         <div id="drawing_area">
           <canvas id="canvas" width="300" height="450"></canvas>
         </div>
+        <div class="switch_btn">
+          <i class="fa fa-exchange-alt"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -105,6 +108,11 @@ export default {
     border: 1px solid #343434;
     cursor: pointer;
   }
+  .switch_btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
   .bar {
     height: 40px;
     width: 100%;
@@ -114,7 +122,7 @@ export default {
     display: flex;
     flex-direction: row;
   }
-  .bar div {
+  .bar div, .switch_btn {
     height: 30px;
     line-height: 30px;
     padding: 0 10px;
@@ -124,5 +132,9 @@ export default {
     border-radius: 5px;
     margin: 5px 2px;
     cursor: pointer;
+  }
+  .switch_btn {
+    background-color: #343434;
+    color: #f9f9f9;
   }
 </style>
