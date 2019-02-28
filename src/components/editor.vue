@@ -30,6 +30,7 @@ import {leftToCanvas} from '../main';
 
 // Initialising fabric js // when component is created
 var cn = null;
+var a,b;
 
 export default {
   data(){
@@ -37,11 +38,38 @@ export default {
       toolbar: {
         showActions: true,
       },
-      showFront: true
+      showFront: true,
+      canvas: {
+        front: '',
+        back: ''
+      }
     }
   },
   methods: {
     swapShirt: function(){
+      // Saving state of both front and back canvas in a variables a and b
+      if(this.showFront){
+        b = JSON.stringify(cn);
+        cn.clear();
+        try
+          {
+             var json = JSON.parse(a);
+             cn.loadFromJSON(a);
+          }
+          catch(e)
+          {}
+      }else{
+        a = JSON.stringify(cn);
+        cn.clear();
+        try
+        {
+           var json = JSON.parse(b);
+           cn.loadFromJSON(b);
+        }
+        catch(e)
+        {}
+      }
+      //switching to either front or back
       this.showFront = !this.showFront;
     },
     toolbarAction: function(action){
