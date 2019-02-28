@@ -56,8 +56,9 @@ export default {
              var json = JSON.parse(a);
              cn.loadFromJSON(a);
           }
-          catch(e)
-          {}
+          catch(e){
+            console.error(e);
+          }
       }else{
         a = JSON.stringify(cn);
         cn.clear();
@@ -66,8 +67,9 @@ export default {
            var json = JSON.parse(b);
            cn.loadFromJSON(b);
         }
-        catch(e)
-        {}
+        catch(e){
+          console.error(e);
+        }
       }
       //switching to either front or back
       this.showFront = !this.showFront;
