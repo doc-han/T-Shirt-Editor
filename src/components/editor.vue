@@ -39,8 +39,12 @@ export default {
     toolbarAction: function(action){
       switch (action) {
         case 'delete':
-          var ob = cn.getActiveObject();
-          cn.remove(ob);
+        try {
+            var ob = cn.getActiveObject();
+            if(ob != null) cn.remove(ob);
+        } catch (e) {
+          console.log(e);
+        }
           break;
         case 'clear':
           if(confirm("Are you sure you want to clear Everything!!!")){
