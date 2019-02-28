@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <button type="button" class="btn_artwork" name="button"> <i class="fa fa-upload"></i> Upload artwork</button>
+    <button type="button" id="add-design" class="btn_artwork" name="button"> <i class="fa fa-upload"></i> Upload artwork</button>
 
     <div class="input">
       <div class="label">
@@ -49,6 +49,26 @@ export default {
         var artwork = e.target.src;
         leftToCanvas.$emit('clicked-artwork', artwork);
       }
+    }
+  },
+  mounted: function(){
+    var myWidget = cloudinary.createUploadWidget({
+      cloudName: process.env.CLOUD_NAME,
+      uploadPreset: process.env.UPLOAD_PRESET},
+      (error, result) => {
+        if(result.event == "success"){
+          $('.artworks').append(processImage(result.info.url));
+        }
+    });
+
+  document.getElementById("add-design").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+
+    function processImage(url) {
+      var img = $('<img style="width:130px;height:100px">');
+      img.attr('src', url);
+    return img;
     }
   }
 }
