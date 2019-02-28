@@ -12,11 +12,12 @@
     </div>
     <div class="canvas_bg">
       <div class="image_bg">
-        <img id="shirt_img" src="../assets/crew_front.png" alt="">
+        <img v-if="showFront" id="shirt_img" src="../assets/crew_front.png" alt="">
+        <img v-else id="shirt_img" src="../assets/crew_back.png" alt="">
         <div id="drawing_area">
           <canvas id="canvas" width="300" height="450"></canvas>
         </div>
-        <div class="switch_btn">
+        <div @click="swapShirt()" class="switch_btn">
           <i class="fa fa-exchange-alt"></i>
         </div>
       </div>
@@ -35,10 +36,14 @@ export default {
     return {
       toolbar: {
         showActions: true,
-      }
+      },
+      showFront: true
     }
   },
   methods: {
+    swapShirt: function(){
+      this.showFront = !this.showFront;
+    },
     toolbarAction: function(action){
       switch (action) {
         case 'delete':
