@@ -25,7 +25,11 @@
       <div class="label">
         Artworks
       </div>
-      <div @click="artworkClick($event)" class="artworks">
+      <!-- <div @click="artworkClick($event)" class="artworks">
+        <img class="artworks-item" src="https://vuejs.org/images/logo.png" alt="">
+        <img class="artworks-item" src="../assets/logo.png" alt="">
+      </div> -->
+      <div id="artworks">
         <img class="artworks-item" src="https://vuejs.org/images/logo.png" alt="">
         <img class="artworks-item" src="../assets/logo.png" alt="">
       </div>
@@ -57,7 +61,7 @@ export default {
       uploadPreset: process.env.UPLOAD_PRESET},
       (error, result) => {
         if(result.event == "success"){
-          $('.artworks').append(processImage(result.info.url));
+          $('#artworks').append(processImage(result.info.url));
         }
     });
 
@@ -66,11 +70,19 @@ export default {
   }, false);
 
     function processImage(url) {
-      var img = $('<img style="width:130px;height:100px">');
+      var img = $('<img class="artworks-item" style="width:130px;height:100px">');
       img.attr('src', url);
+      console.log(img);
     return img;
     }
-  }
+
+    document.getElementById("artworks").addEventListener("click", function(e){
+      if (e.target.classList[0]=="artworks-item") { // checking if clicked item has a class of artworks-item
+        var artwork = e.target.src;
+        leftToCanvas.$emit('clicked-artwork', artwork);
+      }
+    }, false);
+  },
 }
 </script>
 
@@ -99,7 +111,7 @@ $color-item-size: 30px;
     margin-top: 10px;
     cursor: pointer;
   }
-  .artworks {
+  #artworks {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
