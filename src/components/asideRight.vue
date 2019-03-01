@@ -3,6 +3,13 @@
 
     <div class="input">
       <div class="label">
+        Keywords
+      </div>
+    <inputTag v-bind="inputTagProp" class="inputTag"></inputTag>
+    </div>
+
+    <div class="input">
+      <div class="label">
         Base Cost
       </div>
       <input type="text" class="input-control" value="GHS 35" disabled>
@@ -28,7 +35,27 @@
 </template>
 
 <script>
+import inputTag from 'vue-input-tag'
+
 export default {
+  components: {
+    inputTag,
+  },
+  data(){
+    return{
+      inputTagProp: {
+        value: [],
+        placeholder: 'separate with comma',
+        readOnly: false,
+        addTagOnBlur: false,
+        limit: -1,
+        validate: 'text',
+        addTagOnKeys: [13,188],
+        allowDuplicates: false,
+        beforeAdding: null
+      }
+    }
+  }
 }
 </script>
 
