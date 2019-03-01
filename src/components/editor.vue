@@ -102,6 +102,7 @@ export default {
     // Listening for the clicked artwork
     leftToCanvas.$on('clicked-artwork', function(artwork){
       fabric.Image.fromURL(artwork, function(img){
+        if(img.width>cn.width) img.scale(0.5); // scaling down image if width is greater than that of canvas
         cn.add(img);
         cn.renderAll();
       });
