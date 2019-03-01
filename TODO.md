@@ -7,7 +7,7 @@ Below are features to this project :)
 - [x] Saving and restoring canvas state for front and back
 - [x] Artwork click embed into canvas
 - [ ] Input fields generated from json input - function/functions required
-- [ ] Saving both front and back artworks to cloudinary
+- [ ] Saving both front and back artworks to cloudinary and saving reference in db
 - [ ] Input validation and getting user data according to how json was defined
 
 ## Happy Canvasing :)
