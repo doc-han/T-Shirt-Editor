@@ -3,6 +3,16 @@
 
     <div class="input">
       <div class="label">
+        Select Category
+      </div>
+      <select class="input-control">
+        <option disabled selected>Choose One</option>
+        <option value="">Movie</option>
+      </select>
+    </div>
+
+    <div class="input">
+      <div class="label">
         Keywords
       </div>
     <inputTag v-bind="inputTagProp" class="inputTag"></inputTag>
