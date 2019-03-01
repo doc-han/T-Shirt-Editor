@@ -68,7 +68,7 @@ export default {
            cn.loadFromJSON(b);
         }
         catch(e){
-          console.error(e);
+          // Do nothing with the expected error
         }
       }
       //switching to either front or back
@@ -81,7 +81,7 @@ export default {
             var ob = cn.getActiveObject();
             if(ob != null) cn.remove(ob);
         } catch (e) {
-          console.log(e);
+          // Do nothing with the expected error
         }
           break;
         case 'clear':
@@ -101,14 +101,6 @@ export default {
     });
     // Listening for the clicked artwork
     leftToCanvas.$on('clicked-artwork', function(artwork){
-      // Initialising canvas on first attempt to add object
-      if(cn == null){
-        cn = new fabric.Canvas('canvas');
-        var target = null;
-        cn.on('mouse:down',function(options){
-          target = options.target;
-        });
-      }
       fabric.Image.fromURL(artwork, function(img){
         cn.add(img);
         cn.renderAll();
@@ -116,6 +108,16 @@ export default {
 
     });
   },
+  mounted: function(){
+    // Initialising canvas on first attempt to add object
+    if(cn == null){
+      cn = new fabric.Canvas('canvas');
+      var target = null;
+      cn.on('mouse:down',function(options){
+        target = options.target;
+      });
+    }
+  }
 }
 </script>
 
