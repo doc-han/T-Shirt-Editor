@@ -1,6 +1,29 @@
 <template lang="html">
   <div class="content">
 
+    <div class="input">
+      <div class="label">
+        Base Cost
+      </div>
+      <input type="text" class="input-control" value="GHS 35" disabled>
+    </div>
+
+    <div class="input">
+      <div class="label">
+        Beginner Profit
+      </div>
+      <input type="text" class="input-control" value="GHS 5" disabled>
+    </div>
+
+    <div class="input">
+      <div class="label">
+        Total Cost
+      </div>
+      <input type="text" class="input-control" value="GHS 40" disabled>
+    </div>
+
+    <button type="button" class="upload-btn">UPLOAD DESIGN</button>
+
   </div>
 </template>
 
@@ -10,4 +33,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .upload-btn {
+    padding: 10px 15px;
+    font-size: 18px;
+    background-color: #343434;
+    color: #f9f9f9;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 </style>
