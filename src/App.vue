@@ -28,7 +28,7 @@ export default {
     return {
       config: {
         left: {
-          colors: ['#f44336','#009688','#ff9800','#795548','#607d8b'],
+          colors: ['#ffffff','#f44336','#009688','#ff9800','#795548','#607d8b'],
         }
       }
     }
