@@ -109,18 +109,20 @@ $color-item-size: 30px;
     border: 1px solid #e8e8e8;
     border-radius: 5px;
     margin-top: 10px;
+    background-color: #343434;
+    color: #f9f9f9;
     cursor: pointer;
   }
   #artworks {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    cursor: pointer;
   }
   .artworks-item {
     height: 100px;
     width: 130px;
     margin-bottom: 10px;
-    cursor: pointer;
   }
 
 
