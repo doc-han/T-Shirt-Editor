@@ -5,7 +5,7 @@ Below are features to this project :)
 - [x] Artwork/Image upload
 - [X] Shirt swap front and back
 - [x] Saving and restoring canvas state for front and back
-- [ ] Artwork click embed into canvas
+- [x] Artwork click embed into canvas
 - [ ] Input fields generated from json input - function/functions required
 - [ ] Saving both front and back artworks to cloudinary
 - [ ] Input validation and getting user data according to how json was defined
