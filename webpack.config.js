@@ -92,7 +92,7 @@ if (process.env.NODE_ENV === 'development') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"',
+        NODE_ENV: '"development"',
         CLOUD_NAME: '"farhano123"',
         API_KEY: '"817999527351872"',
         UPLOAD_PRESET: '"nak6ious"',
