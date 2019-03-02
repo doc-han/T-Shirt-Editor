@@ -39,13 +39,14 @@
       <input type="text" class="input-control" value="GHS 40" disabled>
     </div>
 
-    <button type="button" class="upload-btn">UPLOAD DESIGN</button>
+    <button @click="uploadClick()" type="button" class="upload-btn">UPLOAD DESIGN</button>
 
   </div>
 </template>
 
 <script>
 import inputTag from 'vue-input-tag'
+import {rightToCanvas} from '../main'
 
 export default {
   components: {
@@ -64,6 +65,11 @@ export default {
         allowDuplicates: false,
         beforeAdding: null
       }
+    }
+  },
+  methods: {
+    uploadClick: function(){
+      rightToCanvas.$emit('upload-click', '');
     }
   }
 }
