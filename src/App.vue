@@ -16,6 +16,7 @@
 import asideLeft from './components/asideLeft'
 import editor from './components/editor'
 import asideRight from './components/asideRight'
+import {rightToCanvas} from './main'
 
 export default {
   name: 'app',
@@ -32,7 +33,18 @@ export default {
         }
       }
     }
-  }
+  },
+  created: function(){
+    var _self = this;
+    rightToCanvas.$on('upload-click', function(d){
+      _self.upload();
+    });
+  },
+  methods: {
+    upload: function(){
+
+    }
+  },
 }
 </script>
 
