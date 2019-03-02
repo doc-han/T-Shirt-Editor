@@ -56,7 +56,7 @@ export default {
     return{
       inputTagProp: {
         value: [],
-        placeholder: 'separate with comma',
+        placeholder: 'Press Enter after Keyword',
         readOnly: false,
         addTagOnBlur: false,
         limit: -1,
