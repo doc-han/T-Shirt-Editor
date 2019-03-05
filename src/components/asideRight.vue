@@ -5,9 +5,9 @@
       <div class="label">
         Select Category
       </div>
-      <select class="input-control">
+      <select v-model="config.selectedCategory" class="input-control">
         <option disabled selected>Choose One</option>
-        <option value="">Movie</option>
+        <option v-for="cat in config.categories" :value="cat">{{ cat }}</option>
       </select>
     </div>
 
@@ -22,21 +22,24 @@
       <div class="label">
         Base Cost
       </div>
-      <input type="text" class="input-control" value="GHS 35" disabled>
+      <input type="text" class="input-control" :value="'GHS '+config.base" disabled>
     </div>
 
     <div class="input">
       <div class="label">
         Beginner Profit
       </div>
-      <input type="text" class="input-control" value="GHS 5" disabled>
+      <select v-model="config.selectedProfit" class="input-control">
+        <option disabled selected>Choose One</option>
+        <option v-for="p in config.profit" :value="p">{{ 'GHS '+ p }}</option>
+      </select>
     </div>
 
     <div class="input">
       <div class="label">
         Total Cost
       </div>
-      <input type="text" class="input-control" value="GHS 40" disabled>
+      <input type="text" class="input-control" :value="'GHS '+ (parseInt(config.selectedProfit) + parseInt(config.base))" disabled>
     </div>
 
     <button @click="uploadClick()" type="button" class="upload-btn">UPLOAD DESIGN</button>
@@ -49,6 +52,7 @@ import inputTag from 'vue-input-tag'
 import {rightToCanvas} from '../main'
 
 export default {
+  props: ['config'],
   components: {
     inputTag,
   },
