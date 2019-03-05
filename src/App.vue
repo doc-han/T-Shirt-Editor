@@ -7,7 +7,7 @@
       <editor />
     </div>
     <div class="asideRight">
-      <asideRight />
+      <asideRight :config="config.right"></asideRight>
     </div>
   </div>
 </template>
@@ -29,20 +29,30 @@ export default {
     return {
       config: {
         left: {
+          title: '',
           colors: ['#ffffff','#f44336','#009688','#ff9800','#795548','#607d8b'],
+          selectedColor: '#ffffff',
+        },
+        right: {
+          categories: ['Movies','Funny','Others'],
+          selectedCategory: '',
+          keywords: [],
+          base: 35,
+          profit: [5,10,15],
+          selectedProfit: 5,
         }
       }
     }
   },
   created: function(){
-    var _self = this;
+    var _self = this; // to get the $el object :)
     rightToCanvas.$on('upload-click', function(d){
       _self.upload();
     });
   },
   methods: {
     upload: function(){
-
+      console.log(this.config);
     }
   },
 }
