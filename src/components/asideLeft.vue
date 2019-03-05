@@ -7,7 +7,7 @@
       <div class="label">
         Design Title
       </div>
-      <input type="text" class="input-control">
+      <input v-model="config.title" type="text" class="input-control">
     </div>
 
     <div class="input">
@@ -15,8 +15,11 @@
         Select colors
       </div>
       <div class="colors">
-        <div class="color-item" v-for='(color) in config.colors' @click="colorClick(color)" :style="'background-color: '+color"></div>
+        <div v-for='(color) in config.colors' @click="colorClick(color,$event)" class="color-item" :style="'background-color: '+color">
+
+        </div>
       </div>
+      The color you pick is what would be displayed to users
     </div>
 
     <button type="button" id="add-design" class="btn_artwork" name="button"> <i class="fa fa-upload"></i> Upload artwork</button>
@@ -30,8 +33,6 @@
         <img class="artworks-item" src="../assets/logo.png" alt="">
       </div> -->
       <div id="artworks">
-        <img class="artworks-item" src="https://vuejs.org/images/logo.png" alt="">
-        <img class="artworks-item" src="../assets/logo.png" alt="">
       </div>
     </div>
 
@@ -44,7 +45,17 @@ import {leftToCanvas} from '../main'
 export default {
   props: ['config'],
   methods: {
-    colorClick: function(color){
+    colorClick: function(color,e){
+      /// This whole code has to be updated !!!!!!!
+
+      //setting select color to prop
+      this.config.selectedColor = color;
+      //removing check from others
+      $(".color-item").html("");
+      //Assigning check to picked color
+      var el = e.target;
+      el.innerHTML = '<i class="fa fa-check"></i>';
+      //emitting color to the editor
       leftToCanvas.$emit('clicked-color', color);
     },
     artworkClick: function(e){
